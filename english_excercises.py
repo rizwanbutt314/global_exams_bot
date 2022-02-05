@@ -13,7 +13,7 @@ from utils import (
 def main():
     username = "test@test.com"
     password = "test123"
-    form_wait = 0.08 # mins
+    form_wait = 19 # mins
 
     driver = get_chrome_driver()
 
