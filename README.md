@@ -11,7 +11,8 @@ The purpose of this bot is to automate the form submission of different excercis
 * install requirements: `pip install -r requirements.txt`
 
 ### Run:
-* Command to run scraper: `python main.py`
+* Command to run excercises automation for French: `python french_excercises.py`
+* Command to run excercises automation for English: `python english_excercises.py`
 
 ### Note:
 *  `requirements.txt` file contains the list of packages that are required to install.
