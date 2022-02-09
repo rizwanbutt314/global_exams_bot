@@ -34,8 +34,8 @@ def make_soup(page_source):
     return soup
 
 
-def wait_for_element(driver, xpath):
-    WebDriverWait(driver, 40).until(EC.presence_of_element_located(
+def wait_for_element(driver, xpath, timeout=40):
+    WebDriverWait(driver, timeout).until(EC.presence_of_element_located(
         (By.XPATH, xpath)))
 
 

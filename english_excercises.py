@@ -78,33 +78,33 @@ def main():
 
 
     # Select Extended registeration
-    wait_for_element(driver, '//font[text()="Extended registration"] | //span[text()="Enregistrement étendu"]')
+    wait_for_element(driver, '//font[text()="Extended registration"] | //span[text()="Enregistrement étendu"] | //span[text()="Extended listening"]')
 
     extended_registration = driver.find_element_by_xpath(
-        '//font[text()="Extended registration"] | //span[text()="Enregistrement étendu"]')
+        '//font[text()="Extended registration"] | //span[text()="Enregistrement étendu"] | //span[text()="Extended listening"]')
     extended_registration.click()
 
     time.sleep(10)
 
-    wait_for_element(driver, '//button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"]')
+    wait_for_element(driver, '//button[text()="Continuer"] | //button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"] | //button[text()="Try again"] | //button[text()="Continue"]')
 
     all_start_buttons = driver.find_elements_by_xpath(
-        '//button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"]')
+        '//button[text()="Continuer"] | //button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"] | //button[text()="Try again"] | //button[text()="Continue"]')
 
     # Excercise Loop
     i = 0
     while i < len(all_start_buttons):
         # Go to Form
         start_btn = driver.find_elements_by_xpath(
-        '//button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"]')[i]
+        '//button[text()="Continuer"] | //button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"] | //button[text()="Try again"] | //button[text()="Continue"]')[i]
         start_btn.click()
 
         # close if popup is present
         try:
-            wait_for_element(driver, '//button[text()="Démarrer"] | //button[text()="Start"]')
+            wait_for_element(driver, '//button[text()="Démarrer"] | //button[text()="Start"]', timeout=20)
             popup_cancel_btn = driver.find_element_by_xpath('//button[text()="Démarrer"] | //button[text()="Start"]')
             popup_cancel_btn.click()
-        except:
+        except Exception as e:
             pass
 
         wait_for_element(driver, '//*[@data-icon="clock"]')
@@ -143,32 +143,32 @@ def main():
 
             try:
                 # Click on To validate if present
-                wait_for_element(driver, '//font[text()="To validate"] | //button[text()="Valider"]')
+                wait_for_element(driver, '//font[text()="To validate"] | //button[text()="Valider"] | //button[text()="Confirm"]')
 
                 to_validate = driver.find_element_by_xpath(
-                    '//font[text()="To validate"] | //button[text()="Valider"]')
+                    '//font[text()="To validate"] | //button[text()="Valider"] | //button[text()="Confirm"]')
                 to_validate.click()
                 time.sleep(5)
             except:
                 next_page = False
                 # Click on To end if present
-                wait_for_element(driver, '//font[text()="To end"] | //button[text()="Terminer"]')
+                wait_for_element(driver, '//font[text()="To end"] | //button[text()="Terminer"] | //button[text()="Finish"]')
 
                 # wait to log for the form
                 time.sleep(form_wait * 60)
 
                 to_end = driver.find_element_by_xpath(
-                    '//font[text()="To end"] | //button[text()="Terminer"]')
+                    '//font[text()="To end"] | //button[text()="Terminer"] | //button[text()="Finish"]')
                 to_end.click()
                 time.sleep(5)
 
         # Go back to list
-        wait_for_element(driver, '//font[text()="back to the list"] | //span[text()="Retour à la liste"]')
+        wait_for_element(driver, '//font[text()="back to the list"] | //span[text()="Retour à la liste"] | //span[text()="Back to the list"]')
 
-        back_btn = driver.find_element_by_xpath('//font[text()="back to the list"] | //span[text()="Retour à la liste"]')
+        back_btn = driver.find_element_by_xpath('//font[text()="back to the list"] | //span[text()="Retour à la liste"] | //span[text()="Back to the list"]')
         back_btn.click()
 
-        wait_for_element(driver, '//button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"]')
+        wait_for_element(driver, '//button[text()="Relancer"] | //button[text()="Lancer"] | //font[text()="To throw"] | //font[text()="To restart"] | //button[text()="Try again"] | //button[text()="Continue"]')
 
         i += 1
 
