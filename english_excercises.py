@@ -37,6 +37,14 @@ def main():
 
     wait_for_element(driver, '//h1[contains(@class, "leading-tighter")]')
 
+    # close if cookies popup is present
+    try:
+        wait_for_element(driver, '//button[@id="axeptio_btn_acceptAll"] | //button[text()="Tout accepter"]', timeout=20)
+        popup_cancel_btn = driver.find_element_by_xpath('//button[@id="axeptio_btn_acceptAll"] | //button[text()="Tout accepter"]')
+        popup_cancel_btn.click()
+    except Exception as e:
+        pass
+
     # Open Test Language dropdown
     test_language_dropdowns = driver.find_elements_by_xpath(
         '//span[contains(text(), "Prepare for the")]//.. | //span[contains(text(), "Je m\'entraîne au ")]//..')
